@@ -14,73 +14,53 @@ ALLOWED_EMAIL_PATTERN = re.compile(
 )
 NAME_PATTERN = re.compile(r"[A-Za-z\u00C0-\u00FF '\u00b4`^~.-]+")
 VALID_DDDS = {
-    "11", "12", "13", "14", "15", "16", "17", "18", "19",
-    "21", "22", "24", "27", "28",
-    "31", "32", "33", "34", "35", "37", "38",
-    "41", "42", "43", "44", "45", "46", "47", "48", "49",
-    "51", "53", "54", "55",
-    "61", "62", "63", "64", "65", "66", "67", "68", "69",
-    "71", "73", "74", "75", "77", "79",
-    "81", "82", "83", "84", "85", "86", "87", "88", "89",
-    "91", "92", "93", "94", "95", "96", "97", "98", "99",
+    "11","12","13","14","15","16","17","18","19",
+    "21","22","24","27","28",
+    "31","32","33","34","35","37","38",
+    "41","42","43","44","45","46","47","48","49",
+    "51","53","54","55",
+    "61","62","63","64","65","66","67","68","69",
+    "71","73","74","75","77","79",
+    "81","82","83","84","85","86","87","88","89",
+    "91","92","93","94","95","96","97","98","99",
 }
 
-# =============================================================================
-# 1. LOCAIS
-# =============================================================================
 LOCAL_OPTIONS = [
-    {"id": "1", "nome": "CONSELHO COMUNITÁRIO DO PARQUE SÃO JOSÉ"},
+    {"id": "1", "nome": "PROJETO AMIGOS DE DEUS"},
 ]
 
-# =============================================================================
-# 2. CATÁLOGO DE CURSOS
-# =============================================================================
 COURSE_CATALOG = [
-    {"id": "1", "nome": "26/ECCE 001 - ENCCEJA"},
+    {"id": "1", "nome": "26/ECCE 004 - ENCCEJA"},
 ]
 
-# =============================================================================
-# 3. HORÁRIOS
-# =============================================================================
 SCHEDULE_OPTIONS = {
-    "1": {"dias_aula": "Quarta e Sexta", "horario": "18h até 21h"},
+    "1": {"dias_aula": "Ter\u00e7a a Sexta", "horario": "14h at\u00e9 17h"},
 }
 
-# =============================================================================
-# 4-5. DATAS
-# =============================================================================
 START_DATE_OPTIONS = {
-    "1": "12/08/2026",
+    "1": "18/08/2026",
 }
 END_DATE_OPTIONS = {
     "1": "21/08/2026",
 }
 
-# =============================================================================
-# 6. ENDEREÇOS
-# =============================================================================
 ADDRESS_OPTIONS = {
-    "1": "📍Rua Costa Freire, nº 2238, bairro Parangaba - Fortaleza, CE - CEP.: 60.730-255.",
+    "1": "\U0001f4cdRua Londrina, n\u00ba 1972 - bairro Granja Portugal - Fortaleza, CE - CEP.: 60540-485.",
 }
 
-# =============================================================================
-# 7. TURMAS
-# =============================================================================
 TURMA_OPTIONS = [
     {
         "id": "1",
         "curso_id": "1",
         "local_id": "1",
-        "turma_codigo": "26/ECCE-001",
+        "turma_codigo": "26/ECCE-004",
         "agenda_id": "1",
         "periodo_id": "1",
         "encerramento_id": "1",
         "endereco_id": "1",
     },
 ]
-# =============================================================================
-# 8. FUNÇÕES AUXILIARES
-# =============================================================================
+
 def build_course_options():
     local_by_id  = {opt["id"]: opt for opt in LOCAL_OPTIONS}
     course_by_id = {opt["id"]: opt for opt in COURSE_CATALOG}
@@ -149,13 +129,12 @@ def fill_form_data_from_selection(form_data):
                 "data_inicio","encerramento","endereco_curso","opcao_id"):
         form_data.setdefault(key, "")
 
-
 TEMPLATE_WIZARD = r"""<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Fortaleza - Regional X</title>
+    <title>Fortaleza - Regional V</title>
     <link rel="stylesheet" href="/static/style.css">
     <link rel="stylesheet" href="/static/assistant.css">
     <link href="https://fonts.googleapis.com/css2?family=Wise:wght@400;700;900&display=swap" rel="stylesheet">
@@ -284,7 +263,7 @@ TEMPLATE_WIZARD = r"""<!DOCTYPE html>
         <div class="header-logos">
             <img src="/static/logo-prefeitura.png" alt="Prefeitura" class="logo-prefeitura-topo">
             <div class="header-divider"></div>
-            <img src="/static/logoprojeto.jpeg" alt="Fortaleza Regional X" class="logo-projeto-topo">
+            <img src="/static/logoprojeto.jpeg" alt="Fortaleza Regional V" class="logo-projeto-topo">
         </div>
     </header>
     <div class="wizard-page">
@@ -301,14 +280,16 @@ TEMPLATE_WIZARD = r"""<!DOCTYPE html>
             <form id="wizard-form" method="POST" action="{{ url_for('inscricao_unica') }}" autocomplete="off" novalidate>
                 <section class="wizard-panel" data-step="index">
                     <div class="hero-grid"><div class="hero-card">
-                        <span class="hero-pill">FORTALEZA - REGIONAL X (ENCCEJA)</span>
-                        <p style="margin:10px 0 0;color:#8b0000;font-size:0.9rem;font-weight:700;line-height:1.5;">Casa de Apoio ao Cidad&#227;o</p>
+                        <span class="hero-pill">FORTALEZA - REGIONAL V (ENCCEJA)</span>
+                        <p style="margin:10px 0 0;color:#8b0000;font-size:0.9rem;font-weight:700;line-height:1.5;">Projeto Amigos de Deus</p>
                         <h1 class="hero-title">INVISTA EM VOC&#202;. CONSTRUA SEU FUTURO.</h1>
                         <p class="hero-subtitle">Descubra novas possibilidades, adquira conhecimentos pr&#225;ticos e d&#234; o primeiro passo para transformar sua vida profissional.</p>
                         <div class="hero-highlights">
-                            <div class="hero-highlight"><strong>CURSOS DISPON&#205;VEIS:</strong><div class="cursos-lista">
-                                        <span class="curso-tag">&#128218; 26/ECCE 001 - ENCCEJA</span>
-                                    </div></div>
+                            <div class="hero-highlight"><strong>CURSO DISPON&#205;VEL:</strong>
+                                <div class="cursos-lista">
+                                    <span class="curso-tag">&#128218; 26/ECCE 004 - ENCCEJA</span>
+                                </div>
+                            </div>
                             <div class="hero-highlight"><strong>BENEF&#205;CIOS</strong>
                                 <div class="benefits-slider" data-benefits-slider>
                                     <div class="benefits-viewport">
@@ -319,7 +300,6 @@ TEMPLATE_WIZARD = r"""<!DOCTYPE html>
                                         <div class="benefit-slide">Mais oportunidades de emprego e gera&#231;&#227;o de renda</div>
                                         <div class="benefit-slide">&#128218; Material did&#225;tico incluso</div>
                                         <div class="benefit-slide">Networking e troca de experi&#234;ncias</div>
-                                        <div class="benefit-slide">Suporte para desenvolver sua carreira profissional</div>
                                         <div class="benefit-slide">Estrutura e recursos adequados para cada forma&#231;&#227;o</div>
                                         <div class="benefit-slide">Qualifica&#231;&#227;o para quem deseja crescer e conquistar novas oportunidades</div>
                                     </div>
@@ -330,7 +310,7 @@ TEMPLATE_WIZARD = r"""<!DOCTYPE html>
                                     </div>
                                 </div>
                             </div>
-                            <div class="hero-highlight"><strong>FORTALEZA - REGIONAL X</strong> Programa de qualifica&#231;&#227;o profissional gratuita para ampliar suas oportunidades e fortalecer sua entrada no mercado de trabalho.</div>
+                            <div class="hero-highlight"><strong>FORTALEZA - REGIONAL V</strong> Programa de qualifica&#231;&#227;o profissional gratuita para ampliar suas oportunidades e fortalecer sua entrada no mercado de trabalho.</div>
                         </div>
                         <div style="margin-top:18px;text-align:center;">
                             <button type="button" class="cta-button" data-next="dados" style="width:100%;max-width:360px;min-height:54px;padding:14px 22px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;background:linear-gradient(90deg,#8b0000 0%,#c23b3b 100%);color:#fff;border:none;border-radius:18px;cursor:pointer;box-shadow:0 10px 24px rgba(139,0,0,0.24);">Come&#231;ar inscri&#231;&#227;o</button>
@@ -504,7 +484,7 @@ TEMPLATE_CONFIRMACAO = r"""<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Fortaleza - Regional X</title>
+    <title>Fortaleza - Regional V</title>
     <link rel="stylesheet" href="/static/style.css">
     <link rel="stylesheet" href="/static/assistant.css">
     <link href="https://fonts.googleapis.com/css2?family=Wise:wght@400;700;900&display=swap" rel="stylesheet">
@@ -574,7 +554,7 @@ TEMPLATE_CONFIRMACAO = r"""<!DOCTYPE html>
         <div class="header-logos">
             <img src="/static/logo-prefeitura.png" alt="Prefeitura" class="logo-prefeitura-topo">
             <div class="header-divider"></div>
-            <img src="/static/logoprojeto.jpeg" alt="Fortaleza Regional X" class="logo-projeto-topo">
+            <img src="/static/logoprojeto.jpeg" alt="Fortaleza Regional V" class="logo-projeto-topo">
         </div>
     </header>
     <div class="confirm-page">
@@ -605,7 +585,6 @@ TEMPLATE_CONFIRMACAO = r"""<!DOCTYPE html>
     </div>
 </body>
 </html>"""
-
 
 # =============================================================================
 # APLICAÇÃO FLASK
@@ -750,7 +729,7 @@ def confirmacao():
     protocolo = session.get("protocolo")
     if not protocolo:
         return redirect(url_for("home"))
-    home_url = "https://fortaleza-regional-10.onrender.com"
+    home_url = "https://fortaleza-regional-5.onrender.com"
     return render_template_string(
         TEMPLATE_CONFIRMACAO,
         protocolo          = protocolo,
